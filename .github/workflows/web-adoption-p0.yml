@@ -1,0 +1,78 @@
+name: Web adoption P0
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: preview는 무변경 계획, apply는 승인된 계획으로 PR을 생성합니다.
+        required: true
+        type: choice
+        options: [preview, apply]
+      release:
+        description: 검토된 release
+        required: true
+        type: choice
+        options: [reference-v1, reference-v2]
+      expected_plan_sha256:
+        description: apply에 필요한 preview plan SHA-256
+        required: false
+        type: string
+
+concurrency:
+  group: web-adoption-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    if: inputs.operation == 'preview'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+      - id: adoption
+        uses: nayunss/ai-dev-bootstrap/.github/actions/release-adoption@d10afe781d03d662114a1ca6b38e469ed8f72dbb
+        with:
+          operation: preview
+          release: ${{ inputs.release }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: web-adoption-preview-${{ github.run_id }}
+          path: ${{ steps.adoption.outputs.result_path }}
+          if-no-files-found: error
+          retention-days: 7
+
+  apply:
+    if: inputs.operation == 'apply' && github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-24.04
+    environment: web-adoption-apply
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+      - id: adoption
+        uses: nayunss/ai-dev-bootstrap/.github/actions/release-adoption@d10afe781d03d662114a1ca6b38e469ed8f72dbb
+        with:
+          operation: apply
+          release: ${{ inputs.release }}
+          expected_plan_sha256: ${{ inputs.expected_plan_sha256 }}
+      - name: Create review branch and pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: web-adoption/${{ github.run_id }}-${{ github.run_attempt }}
+          BASE: ${{ github.event.repository.default_branch }}
+          PLAN: ${{ steps.adoption.outputs.plan_sha256 }}
+        run: |
+          git diff --cached --quiet && exit 1
+          git config user.name "web-adoption[bot]"
+          git config user.email "web-adoption[bot]@users.noreply.github.com"
+          git commit -m "chore(adoption): apply reviewed release"
+          git push origin "HEAD:refs/heads/$BRANCH"
+          gh pr create --base "$BASE" --head "$BRANCH" \
+            --title "chore(adoption): apply reviewed release" \
+            --body "Protected web adoption run created this PR from approved plan $PLAN. Automatic merge is disabled."
