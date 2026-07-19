@@ -73,6 +73,9 @@ jobs:
           git config user.email "web-adoption[bot]@users.noreply.github.com"
           git commit -m "chore(adoption): apply reviewed release"
           git push origin "HEAD:refs/heads/$BRANCH"
-          gh pr create --base "$BASE" --head "$BRANCH" \
-            --title "chore(adoption): apply reviewed release" \
-            --body "Protected web adoption run created this PR from approved plan $PLAN. Automatic merge is disabled."
+          if ! gh pr create --base "$BASE" --head "$BRANCH" \
+              --title "chore(adoption): apply reviewed release" \
+              --body "Protected web adoption run created this PR from approved plan $PLAN. Automatic merge is disabled."; then
+            git push origin --delete "$BRANCH"
+            exit 1
+          fi
