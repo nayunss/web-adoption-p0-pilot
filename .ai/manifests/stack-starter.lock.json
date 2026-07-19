@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "stack-starter-lock",
+  "profileId": "react-vite",
+  "profileSha256": "sha256:9a261b03007b4e178437618467e5ad33a6c9af28c2eaf36016d7351a9f54905a",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "sha256:dcdf6164cbf63a297c08f12dad1b9b14f2730d6419a243576649d254238431e3",
+      "managed": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "sha256:338396afd15bf89baa4e08e92f922b37dec158a4d991a300e019832997c9b964",
+      "managed": true
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "sha256:8b52942d360f42ce2fcc2ceed68a773bb119b096f15f7b916c6a7ec37aca9c5a",
+      "managed": true
+    }
+  ],
+  "execution": {
+    "dependencyInstall": "NOT_RUN",
+    "databaseMigration": "NOT_RUN",
+    "providerWrite": "NOT_RUN",
+    "productionDeploy": "NOT_RUN"
+  },
+  "lockSha256": "sha256:22d6a104e6ef0f9def85122a64464a02cc6851c5ed138f1d56d84da5fa41c17a"
+}

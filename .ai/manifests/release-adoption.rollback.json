@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "kind": "release-adoption-rollback",
+  "fromLock": null,
+  "previousFiles": [],
+  "toLockSha256": "sha256:c3537dbff2a16384dfc60e1fe47c2e02b3c4cb9908aacaa24abc1a6315fc440a",
+  "recordSha256": "sha256:0880952db1aae8ab819f986cae808f12551449564bc485976ced64984cf4a9fe"
+}

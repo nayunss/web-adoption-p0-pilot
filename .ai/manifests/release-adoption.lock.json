@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "release-adoption-lock",
+  "release": {
+    "version": "1.0.0",
+    "commit": "1111111111111111111111111111111111111111",
+    "archivePath": "evals/fixtures/release-adoption/v1.bundle.json",
+    "archiveSha256": "sha256:e4947e763e9497eb07b0c729a3fafea6a8c4791377a9d1107d36c62e3119bafb",
+    "manifestSha256": "sha256:24a1538d91c51d8b829b2931f8b9430226874bda565c484d1b511301f452ba17"
+  },
+  "selection": {
+    "optionalSkills": [
+      "frontend"
+    ],
+    "adapters": [
+      "codex"
+    ]
+  },
+  "files": [
+    {
+      "path": ".ai/manifests/skills.lock.json",
+      "sha256": "sha256:e40ac25a29a7972f0d3d2bfa0ca3894038751066723abb7cd7f90c560b1c2d2a",
+      "managed": true
+    },
+    {
+      "path": ".ai/manifests/stack-starter.lock.json",
+      "sha256": "sha256:5edeab6ec724eafdffb58e3e377038c227c25f86b74d7c9fb3b8ab98e72816b0",
+      "managed": true
+    },
+    {
+      "path": ".ai/manifests/stack-starter.rollback.json",
+      "sha256": "sha256:49a72cf0a0f57751ee434b54d25599c2b060d0f59341b564a7fb2d930bff62a8",
+      "managed": true
+    },
+    {
+      "path": ".ai/skills/frontend/SKILL.md",
+      "sha256": "sha256:b6d501ef2c82e7183d63d5578c33560d825a95317d6f8ebc37d3511490444aff",
+      "managed": true
+    },
+    {
+      "path": ".ai/skills/requirements/SKILL.md",
+      "sha256": "sha256:e40b2f6df072b6926486cbd84a1161612933fa90299c13a76377681db87cfdc6",
+      "managed": true
+    },
+    {
+      "path": ".codex/skills/frontend/SKILL.md",
+      "sha256": "sha256:b6d501ef2c82e7183d63d5578c33560d825a95317d6f8ebc37d3511490444aff",
+      "managed": true
+    },
+    {
+      "path": ".codex/skills/requirements/SKILL.md",
+      "sha256": "sha256:e40b2f6df072b6926486cbd84a1161612933fa90299c13a76377681db87cfdc6",
+      "managed": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "sha256:338396afd15bf89baa4e08e92f922b37dec158a4d991a300e019832997c9b964",
+      "managed": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "sha256:dcdf6164cbf63a297c08f12dad1b9b14f2730d6419a243576649d254238431e3",
+      "managed": true
+    },
+    {
+      "path": "src/main.tsx",
+      "sha256": "sha256:8b52942d360f42ce2fcc2ceed68a773bb119b096f15f7b916c6a7ec37aca9c5a",
+      "managed": true
+    }
+  ],
+  "planSha256": "sha256:fc4790ebc11f9b603480189e16f27d96bdad80898956825d353fc32eae858835",
+  "execution": {
+    "network": "NOT_RUN",
+    "telemetry": "DISABLED",
+    "dependencyInstall": "NOT_RUN",
+    "databaseMigration": "NOT_RUN",
+    "providerWrite": "NOT_RUN",
+    "productionDeploy": "NOT_RUN"
+  },
+  "desktop": {
+    "artifactStatus": "UNSIGNED_DEVELOPMENT_ONLY",
+    "signing": "NOT_RUN",
+    "notarization": "NOT_RUN",
+    "usability": "NOT_RUN"
+  },
+  "recordSha256": "sha256:c3537dbff2a16384dfc60e1fe47c2e02b3c4cb9908aacaa24abc1a6315fc440a"
+}
