@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "skill-distribution-lock",
+  "releaseVersion": "1.0.0",
+  "manifestSha256": "sha256:26fbb35da54fa8d45b19aa635273353426326a1a9484f2367dfba2e95a0d0bf9",
+  "skillIds": [
+    "frontend",
+    "requirements"
+  ],
+  "adapterIds": [
+    "codex"
+  ],
+  "files": [
+    {
+      "path": ".ai/skills/frontend/SKILL.md",
+      "sha256": "sha256:b6d501ef2c82e7183d63d5578c33560d825a95317d6f8ebc37d3511490444aff",
+      "managed": true,
+      "skillId": "frontend"
+    },
+    {
+      "path": ".ai/skills/requirements/SKILL.md",
+      "sha256": "sha256:e40b2f6df072b6926486cbd84a1161612933fa90299c13a76377681db87cfdc6",
+      "managed": true,
+      "skillId": "requirements"
+    },
+    {
+      "path": ".codex/skills/frontend/SKILL.md",
+      "sha256": "sha256:b6d501ef2c82e7183d63d5578c33560d825a95317d6f8ebc37d3511490444aff",
+      "managed": true,
+      "skillId": "frontend"
+    },
+    {
+      "path": ".codex/skills/requirements/SKILL.md",
+      "sha256": "sha256:e40b2f6df072b6926486cbd84a1161612933fa90299c13a76377681db87cfdc6",
+      "managed": true,
+      "skillId": "requirements"
+    }
+  ],
+  "reviewedPluginIds": [
+    "synthetic-review-plugin"
+  ],
+  "pluginExecution": "NOT_RUN",
+  "recordSha256": "sha256:0f0c1cf718877e64f28576d0be223c15998a4a024ed578e62671d5900cccaac9"
+}
