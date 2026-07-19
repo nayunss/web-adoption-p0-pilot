@@ -1,0 +1,29 @@
+name: Web adoption PR validation
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      expected_plan_sha256:
+        description: Exact approved plan SHA-256
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.head_ref, 'web-adoption/')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate adoption plan and changed paths
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.ref || github.event.repository.default_branch }}
+          EXPECTED_PLAN_SHA256: ${{ inputs.expected_plan_sha256 || '' }}
+        run: node .github/scripts/validate-web-adoption-pr.mjs
